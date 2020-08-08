@@ -1,4 +1,4 @@
-package com.R00107892.services;
+package com.R00107892.Services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.R00107892.daos.FilmRepository;
-import com.R00107892.entities.Film;
+import com.R00107892.Models.Film;
+import com.R00107892.Repositorys.FilmRepository;
 
 @Service
 public class FilmServiceImpl implements FilmService {

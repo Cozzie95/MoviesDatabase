@@ -1,10 +1,10 @@
-package com.R00107892.services;
+package com.R00107892.Services;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.R00107892.Services.FilmServiceImpl;
 
-import com.R00107892.entities.Film;
-import com.R00107892.services.FilmServiceImpl;
+import com.R00107892.Models.Film;
 
 public interface FilmService {
 

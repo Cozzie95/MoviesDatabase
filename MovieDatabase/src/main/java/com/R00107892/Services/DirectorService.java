@@ -1,21 +1,16 @@
-package com.R00107892.services;
+package com.R00107892.Services;
 
 import java.util.List;
 
-
-import com.R00107892.entities.Director;
-
+import com.R00107892.Models.Director;
 
 public interface DirectorService {
 
-    
-    Director findDirector(int directorId);
-	boolean deleteDirector(int directorId);
-	boolean existsByDirectorId(int directorId);
-	String findDirectorName(int directorId);
-	List<Director> findDirectorsWithFilmName(String filmName);
-	Director save(Director director);
-	List<Director> listInAlphabeticalOrder();
-	List<Director> listAllDirectors();
-	boolean deleteDirector(Director director);
+	public List getAllDirectors();
+	 
+    public Director getDirectorById(int id);
+ 
+    public void saveOrUpdate(Director director);
+ 
+    public void delete(int id);
 }
