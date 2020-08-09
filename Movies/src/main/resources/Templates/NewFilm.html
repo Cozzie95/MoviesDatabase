@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:insert="fragments.html :: head"> </div>
+
+<body>
+	<header>
+		<div th:insert="fragments.html :: menu"> </div>
+		<h1><span th:text="#{newfilm.heading}">Add a Film</span></h1>
+	</header>
+<main>
+	<form method="post" th:action="@{/newFilm}" th:object="${filmForm}">
+		<label for="filmName" th:text="#{newfilm.filmName}" ></label>
+			<input id="filmName" type="text" th:field="*{filmName}"/>
+		        <span th:if="${#fields.hasErrors('filmName')}" th:errors="*{filmName}" >Error, please try again</span>
+		<br>
+		<label for="director" th:text="#{newfilm.chooseDirector}"></label>
+		<select th:field="*{directorId}">
+			<option  th:each="director: ${directors}" th:text="${director.directorName}" th:value="${director.directorId}"/>
+		</select>
+		<br>
+		<label for="filmReleaseYear" th:text="#{newFilm.filmReleaseYear}" ></label>
+		<input type="text" th:field="*{filmYearOfRelease}"/><span th:if="${#fields.hasErrors('filmReleaseYear')}" th:errors="*{filmReleaseYear}" >Error, please try again</span> 
+		<input type="submit" th:value="#{newFilm.addFilm}"/>
+	</form>
+	</main>
+	<footer th:insert="fragments.html :: footer"></footer>
+
+</body>
+</html>

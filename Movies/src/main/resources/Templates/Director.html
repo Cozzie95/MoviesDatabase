@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<div th:insert="fragments.html :: head"></div>
+
+<body>
+	<header>
+		<div th:insert="fragments.html :: menu"></div>
+		<h1><span th:text="${director.directorFirstName}">Director First Name</span></h1>
+		<h1><span th:text="${director.directorSurame}">Director Surname</span></h1>
+	</header>
+	<main>
+		<div th:if="${not #lists.isEmpty(director.films)}">
+			<table>
+				<tr>
+					<th th:text="#{film.id}">Film Id</th>
+					<th th:text="#{film.film}">Film Name</th>
+					<th th:text="#{film.ReleaseYear}">Year of Release</th>
+				</tr>
+			    <tr th:each="film : ${director.films}" th:object="${film}">			
+					<td th:text="*{filmId}">Film Id</td>
+					<td th:text="*{filmName}">Film Name</td>
+					<td th:texts="*{filmReleaseYear}">Year of Release</td>
+				</tr>
+			</table>
+		</div>
+		<div th:if="${#lists.isEmpty(director.films)}">
+	 		<h2><span th:text="#{director.nofilms}"></span><span th:text="${director.directorName}"></span></h2>
+		</div>
+	</main>
+	<footer th:insert="fragments.html :: footer"></footer>
+
+</body>
+</html>
+
+

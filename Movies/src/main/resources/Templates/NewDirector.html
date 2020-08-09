@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:insert="fragments.html :: head"></div>
+
+
+<body>
+	<header>
+		<div th:insert="fragments.html :: menu"></div>
+		<h1><span th:text="#{newDirector.heading}">Director</span></h1>
+	</header>
+		 <main>
+	<form id="newDirectorForm" method="post" th:action="@{/newdirector}" th:object="${aDirectorForm}">
+		<label for="directorFirstName" th:text="#{newdirector.directorFirstName}" ></label>
+		<input type="text" th:field="*{directorFirstName}"/><span th:if="${#fields.hasErrors('directorFirstName')}" th:errors="*{directorFirstName}" >Error, please try again</span> 
+		
+		<label for="directorSurname" th:text="#{newdirector.directorSurname}" ></label>
+		<input type="text" th:field="*{directorSurname}"/><span th:if="${#fields.hasErrors('directorSurname')}" th:errors="*{directorSurname}" >Error, please try again</span>
+		<br>
+		<input type="submit" th:value="#{newdirector.addDirector}"/>
+	</form>
+	<!-- This message is shown if the ${duplicate} variable was created. -->
+	<h3 class="error" th:if="${duplicate}" th:text="#{newcounty.duplicate}">Error</h3>
+	</main>
+	<footer th:insert="fragments.html :: footer"></footer>
+</body>
+</html>
+
