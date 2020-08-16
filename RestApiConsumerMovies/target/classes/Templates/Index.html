@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<div th:insert="fragments.html :: head"></div>
+	<body>
+	    <header>
+	    	<div th:insert="fragments.html :: menu"></div>
+			<h1 th:text='#{home.title}'></h1>
+		<!-- Add more text here so it doesn't look as empty if there is time -->
+		</header>
+	</body>
+	<footer th:insert="fragments.html :: footer"></footer>
+</html>

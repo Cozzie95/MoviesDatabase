@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<div th:insert="fragments.html :: head"></div>
+	<body>
+	    <header>
+			<div th:insert="fragments.html :: menu"></div>
+			<h1><span th:text="#{home.welcome}"></span></h1>
+		</header>
+			<main>
+			<div class="not-found-error">
+			<p th:text='#{notFound.404Error}'> </p>
+			</div>
+		</main>
+	</body>
+	<footer th:insert="fragments.html :: footer">
+	</footer>
+</html>

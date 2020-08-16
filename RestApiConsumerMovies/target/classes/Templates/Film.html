@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<div th:insert="fragments.html :: head"></div>  
+	<body>
+		<header>
+			<div th:insert="fragments.html :: menu"></div>
+			<h1><span th:text="#{film.heading}"></span></h1>
+		</header>
+		<main>
+			<table>
+			<tr>
+				<th th:text="#{film.id}"></th>
+				<th th:text="#{film.filmName}"></th>
+				<th th:text="#{film.releaseYear}"></th>
+				<th th:text="#{film.directorFirstName}"></th>
+				<th th:text="#{film.directorSurname}"></th>
+			</tr>
+			<tr th:object="${film}">
+				<td th:text="*{filmId}"></td>
+				<td th:text="*{filmName}"></td>
+				<td th:text="*{releaseYear}"></td>
+				<td th:text="*{director.directorFirstName}"></td>
+				<td th:text="*{director.directorSurname}"></td>
+			</tr>
+		</table>
+		</main>
+	</body>
+	<footer th:insert="fragments.html :: footer"></footer>
+</html>
+
+

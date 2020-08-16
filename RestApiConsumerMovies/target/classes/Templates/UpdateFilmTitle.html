@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<div th:insert="fragments.html :: head"></div>
+	<body>
+	    <header>
+	    	<div th:insert="fragments.html :: menu"></div>
+			<h1><span th:text="#{updatefilm.updateFilm}"></span></h1>
+		</header>
+		<main>
+			<form method="post" th:action="@{/updatefilmtitle}" th:object="${filmUpdateForm}">
+				<label for="filmName" th:text="#{film.filmName}" >
+				</label>
+					<input id="filmName" type="text" th:field="*{filmName}"/>
+				        <span th:if="${#fields.hasErrors('filmName')}" th:errors="*{filmName}" th:text='#{updateFilm.Error}'></span>
+				<br>
+				<label for="film" th:text="#{updatefilm.chooseFilm}">
+				</label>
+				<select th:field="*{filmId}">
+					<option  th:each="film: ${films}" th:text="${film.filmName} + ${film.releaseYear}" th:value="${film.filmId}"/>
+				</select>
+				<br>
+				<input type="submit" th:value="#{updateFilm.makeChanges}"/>
+			</form>
+		</main>
+	</body>
+	<footer th:insert="fragments.html :: footer"></footer>
+</html>

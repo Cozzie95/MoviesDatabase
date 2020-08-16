@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<div th:insert="fragments.html :: head"></div>
+	<body>
+	   <header>
+	   		<div th:insert="fragments.html :: menu"></div>
+			<h1><span th:text="#{login.welcome}"></span></h1>
+		</header>
+		<main>
+			<div class="login-page">
+				<div class="form">
+					<div class="error" th:if="${param.error}" th:text="#{login.incorrect}">
+				</div>
+					<form class="login-form" method="post" th:action="@{/login}">
+						<label><span th:text="#{login.email}"></span><input type="email" name="useremail" />
+						</label> 
+						<label>
+							<span th:text="#{login.password}"></span><input type="password" name="userpassword" /> 
+						</label> 
+					    <input type="submit" th:value="#{login.signin}"  />
+					</form>
+				</div>
+			</div>
+		</main>
+	</body>
+	<footer th:insert="fragments.html :: footer"></footer>
+</html>

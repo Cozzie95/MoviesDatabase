@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<div th:insert="fragments.html :: head"></div>
+
+	<body>
+		<header>
+			<div th:insert="fragments.html :: menu"></div>
+			<h1><span th:text="#{newDirector.addDirector}"></span></h1>
+		</header>
+		<main>
+			<form id="newDirectorForm" method="post" th:action="@{/newdirector}" th:object="${aDirectorForm}">
+				<label for="directorFirstName" th:text="#{director.directorFirstName}" >
+				</label>
+				<input type="text" th:field="*{directorFirstName}"/><span th:if="${#fields.hasErrors('directorFirstName')}" th:errors="*{directorFirstName}"  th:text='#{newDirector.error}'></span> 
+				<p>
+				<label for="directorSurname" th:text="#{director.directorSurname}" >
+				</label>
+				<input type="text" th:field="*{directorSurname}"/><span th:if="${#fields.hasErrors('directorSurname')}" th:errors="*{directorSurname}" th:text='#{newDirector.error}'></span>
+				<br>
+				<input type="submit" th:value="#{newdirector.addDirector}"/>
+			</form>
+			<h3 class="error" th:if="${duplicate}" th:text="#{newdirector.duplicate}"></h3>
+		</main>
+	</body>
+	<footer th:insert="fragments.html :: footer">
+	</footer>
+</html>
+

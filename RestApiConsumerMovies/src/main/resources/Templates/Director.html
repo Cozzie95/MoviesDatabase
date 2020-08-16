@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<div th:insert="fragments.html :: head"></div>
+	<body>
+		<div th:insert="fragments.html :: menu"></div>
+		<header>
+			<h1><span th:text="${director.directorFirstName}"></span> <span th:text="${director.directorSurname}"></span></h1>
+		</header>
+		<main>
+			<div th:if="${not #lists.isEmpty(director.films)}">
+				<table>
+					<tr>
+						<th th:text="#{film.filmId}"></th>
+						<th th:text="#{film.filmName}"></th>
+						<th th:text="#{film.releaseYear}"></th>
+					</tr>
+				    <tr th:each="film : ${director.films}" th:object="${film}">			
+						<td th:text="*{filmId}"></td>
+						<td th:text="*{filmName}"></td>
+						<td th:text="*{releaseYear}"></td>
+					</tr>
+				</table>
+			</div>
+			<div th:if="${#lists.isEmpty(director.films)}">
+		 		<span th:text="#{director.nofilms}"></span>
+			</div>
+		</main>
+	</body>
+	<footer th:insert="fragments.html :: footer"></footer>
+</html>
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+ 	<head th:fragment="head">
+  	<link rel="stylesheet" th:href="@{/css/styles.css}" type="text/css" />
+	<title th:Text='#{home.title}'></title>
+
+	<meta charset="utf-8" />
+	</head>
+	<body>
+	    <div th:fragment="menu">
+			<nav>
+		       	<a th:href="@{/index}" th:text="#{navigation.home}"></a>
+		        <a th:href="@{/showdirectors}" th:text="#{navigation.directors}"></a>
+			    <a th:href="@{/showfilms}" th:text="#{navigation.films}"></a>
+			    <span sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"><a th:href="@{/newfilm}" th:text="#{navigation.newFilm}"></a></span>
+			    <span sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"> <a th:href="@{/updatefilmtitle}" th:text="#{navigation.filmUpdate}"></a></span>
+			    <span sec:authorize="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"><a th:href="@{/newdirector}" th:text="#{navigation.newDirector}"></a></span>
+				<span sec:authorize="!isAuthenticated()">
+					<a th:href="@{/login}" id="loginbutton" th:text="#{navigation.login}"></a>
+				</span>
+				<a th:href="@{/register}" id="registerbutton" th:text="#{navigation.register}"></a>
+					<a th:href="@{/logout}" id="logoutbutton" th:text="#{navigation.logout}"></a>
+				</span>
+		    </nav>
+	    </div>
+	</body>
+	<footer>
+	  <a th:href="@{/} + '?lang=fr'"  th:text="#{lang.french}"></a>
+	  <a th:href="@{/} + '?lang=ie'"  th:text="#{lang.english}"></a>
+	</footer>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<div th:insert="fragments.html :: head"></div>
+	<body>
+		<header>
+			<div th:insert="fragments.html :: menu"></div>
+			<h1><span th:text="#{directors.welcome}"></span> <span th:text="${directorname}"></span></h1>
+		</header>
+		<main>
+			<table>
+				<tr>
+					<th th:text="#{director.directorId}"></th>
+					<th th:text="#{director.directorFirstName}"></th>
+					<th th:text="#{director.directorSurname}"></th>
+				</tr>
+				
+				<tr th:each="director,iterationCount : ${directors}" th:class="${iterationCount.odd}? 'odd'" th:object="${director}"	>			
+					<td th:text="*{directorId}"></td>
+					<td th:text="*{directorFirstName}"></td>
+					<td><a th:text=" *{directorSurname}" th:href="@{director/} + *{directorId}"></a></td>
+				</tr>
+			</table>
+		</main>
+	</body>
+	<footer>
+		<div th:insert="fragments.html :: footer"></div>
+	</footer>
+</html>
